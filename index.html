@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoodSnake Official</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="assets/video/BG_main.mp4" type="video/mp4">
+        </video>
+
+        <section id="menu-screen" class="screen active">
+            <div class="overlay">
+                <h1 class="game-title">GoodSnake</h1>
+                <p class="menu-subtitle">Hunt • Grow • Survive</p>
+                <div class="hs-board">
+                    <div class="score-item">
+                        <span class="score-icon">🏆</span>
+                        <div>
+                            <p class="score-label">CLASSIC</p>
+                            <h3 id="hs-classic-val">0</h3>
+                        </div>
+                    </div>
+
+                    <div class="score-divider"></div>
+
+                    <div class="score-item">
+                        <span class="score-icon">⚔️</span>
+                        <div>
+                            <p class="score-label">SURVIVAL</p>
+                            <h3 id="hs-survival-val">0</h3>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-main-play" onclick="goToScreen('map-screen')">►</button>
+            </div>
+        </section>
+
+        <section id="map-screen" class="screen">
+            <h2 class="section-title">PILIH MAP</h2>
+            <div class="map-carousel">
+                <div class="map-card" onclick="selectMap(1, 'sawah')">
+                    <div class="map-preview sawah"></div>
+                    <span>SAWAH</span>
+                </div>
+                <div class="map-card locked" id="lock-perumahan" onclick="selectMap(2, 'rumah')">
+                    <div class="map-preview rumah"></div>
+                    <span>RUMAH (100 pts)</span>
+                </div>
+                <div class="map-card locked" id="lock-kota" onclick="selectMap(3, 'kota')">
+                    <div class="map-preview kota"></div>
+                    <span>KOTA (500 pts)</span>
+                </div>
+            </div>
+            <button class="btn-back" onclick="goToScreen('menu-screen')">KEMBALI</button>
+        </section>
+
+        <section id="mode-screen" class="screen">
+            <h2 class="section-title">PILIH MODE</h2>
+            <div class="mode-container">
+                <div class="mode-card" onclick="startGame('CLASSIC')">
+                    <div class="mode-icon">∞</div>
+                    <h3>CLASSIC</h3>
+                    <p>Ular bisa tembus tembok</p>
+                </div>
+                <div class="mode-card" onclick="startGame('SURVIVAL')">
+                    <div class="mode-icon">⚔</div>
+                    <h3>SURVIVAL</h3>
+                    <p>Tabrak tembok = Mati</p>
+                </div>
+            </div>
+            <button class="btn-back" onclick="goToScreen('map-screen')">KEMBALI</button>
+        </section>
+
+        <div id="canvas-holder"></div>
+    </div>
+
+    <div id="unlock-popup" class="unlock-popup hidden">
+        <div class="unlock-box">
+            <div class="unlock-icon">🔓</div>
+            <h2 id="unlock-title">MAP TERBUKA!</h2>
+            <p id="unlock-desc">Map baru berhasil dibuka</p>
+
+    <!-- Tombol OK -->
+    <button
+        class="unlock-ok-btn"
+        onclick="closeUnlockPopup()">
+
+        OKE
+
+    </button>
+
+</div>
+    </div>
+
+    <script src="js/AudioManager.js"></script>
+    <script src="js/Snake.js"></script>
+    <script src="js/MapEnvironment.js"></script>
+    <script src="js/UISystem.js"></script>
+    <script src="js/GameEngine.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
