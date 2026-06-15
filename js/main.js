@@ -39,7 +39,7 @@ function preload() {
     assets.img.belalang = loadImage('assets/img/belalang.png', () => {}, errHandler);
     assets.img.badanUlar = loadImage('assets/img/badan_ular.png', () => {}, errHandler);
     assets.img.mataUlar = loadImage('assets/img/mata_ular.png', () => {}, errHandler);
-    assets.img.burhan = loadImage('assets/img/burhan.png', () => {}, errHandler);
+    assets.img.burhan = loadImage('assets/img/Burhan.png', () => {}, errHandler);
 
     // Load Suara
     if (USE_AUDIO) {
